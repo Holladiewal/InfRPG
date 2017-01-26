@@ -8,6 +8,7 @@ import me.beepbeat.Entity.Entity;
 public class Kampfregel {
     static Wuerfel w6 = new Wuerfel(6), w10 = new Wuerfel(10);
 
+    //23-24% chance
     public static boolean crit(Entity e){
         return w6.wuerfeln() % w10.wuerfeln() == 0;
     }

@@ -12,6 +12,6 @@ public class Wuerfel {
         this.seitenZahl = seitenZahl;
     }
     public int wuerfeln(){
-        return rndm.nextInt(seitenZahl);
+        return rndm.nextInt(seitenZahl) + 1;
     }
 }
