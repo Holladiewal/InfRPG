@@ -10,6 +10,9 @@ public class Kampfregel {
 
     //23-24% chance
     public static boolean crit(Entity e){
+        //defense/dmg half
+        //return w10.wuerfeln() % w6.wuerfeln() == 0;
+        //crit
         return w6.wuerfeln() % w10.wuerfeln() == 0;
     }
 }

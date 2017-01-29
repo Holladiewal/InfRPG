@@ -2,21 +2,28 @@ package me.beepbeat.Entity;
 
 import me.beepbeat.Items.IInventory;
 import me.beepbeat.Items.IItem;
+import me.beepbeat.Items.InventoryEventBus;
+
+import static me.beepbeat.Entity.Stats.Stärke;
 
 /**
  * Created by zacharias.schmitt on 24.01.2017.
  */
-public class Held extends Entity implements IInventory {
+public class Held extends Entity implements IInventory, InventoryEventBus.IInventoryEventListener {
     private String name = "Held";
     private IItem[] inventory = new IItem[0];
+
+    public Held() {
+        setupStats();
+    }
 
     @Override
     void setupStats() {
         super.setupStats();
-        baseStats.put("Stärke", 0);
+        baseStats.put(Stärke, 10);
     }
 
-    public int getStat(String stat){
+    public int getStat(Stats stat){
         return baseStats.get(stat) + boni.getOrDefault(stat, 0);
     }
 
@@ -72,6 +79,11 @@ public class Held extends Entity implements IInventory {
 
     @Override
     public void update() {
+
+    }
+
+    @Override
+    public void event(Entity e) {
 
     }
     //endregion
