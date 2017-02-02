@@ -1,6 +1,6 @@
 package me.beepbeat.Entity;
 
-import static me.beepbeat.Entity.Stats.Heilkraft;
+import static me.beepbeat.Entity.Stat.Zauberkraft;
 
 /**
  * Created by zacharias.schmitt on 24.01.2017.
@@ -9,7 +9,7 @@ public class Zauberer extends Held {
     @Override
     void setupStats() {
         super.setupStats();
-        baseStats.put(Heilkraft, 10);
+        baseStats.put(Zauberkraft, 10);
     }
 
 

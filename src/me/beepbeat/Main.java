@@ -1,15 +1,20 @@
 package me.beepbeat;
 
+import com.jme3.app.SimpleApplication;
+import com.jme3.material.Material;
+import com.jme3.math.ColorRGBA;
+import com.jme3.scene.Geometry;
+import com.jme3.scene.shape.Box;
 import me.beepbeat.util.InventoryEventBus;
 import me.beepbeat.util.Kampfregel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Main extends SimpleApplication{
     public static InventoryEventBus inventoryEventBus = new InventoryEventBus();
-    public static void main(String[] args) {
-        //critRechner();
+    public static void main(String[] args){
+        new Main().start();
     }
 
     private static void critRechner(){
@@ -31,5 +36,14 @@ public class Main {
             //System.out.println(it);
         }
         System.out.println(mean / mc);
+    }
+
+    @Override
+    public void simpleInitApp() {
+        Geometry box = new Geometry("box", new Box(2,2,2));
+        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        mat.setColor("Color", ColorRGBA.Red);
+        box.setMaterial(mat);
+        rootNode.attachChild(box);
     }
 }

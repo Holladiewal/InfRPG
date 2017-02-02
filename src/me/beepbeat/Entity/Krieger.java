@@ -1,5 +1,7 @@
 package me.beepbeat.Entity;
 
+import static me.beepbeat.Entity.Stat.Ausdauer;
+
 /**
  * Created by zacharias.schmitt on 24.01.2017.
  */

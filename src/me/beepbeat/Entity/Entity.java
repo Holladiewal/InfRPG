@@ -2,10 +2,17 @@ package me.beepbeat.Entity;
 
 import java.util.HashMap;
 
+import static me.beepbeat.Entity.Stat.Angriff;
+import static me.beepbeat.Entity.Stat.Leben;
+
 /**
  * Created by zacharias.schmitt on 24.01.2017.
  */
 public class Entity {
+
+    public Entity(){
+        setupStats();
+    }
 
     HashMap<Stat, Integer> baseStats = new HashMap<>();
     HashMap<Stat, Integer> boni = new HashMap<>();
