@@ -1,12 +1,13 @@
 package me.beepbeat;
 
+import me.beepbeat.util.InventoryEventBus;
 import me.beepbeat.util.Kampfregel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
+    public static InventoryEventBus inventoryEventBus = new InventoryEventBus();
     public static void main(String[] args) {
 
     }
