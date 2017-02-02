@@ -9,7 +9,7 @@ import java.util.List;
 public class Main {
     public static InventoryEventBus inventoryEventBus = new InventoryEventBus();
     public static void main(String[] args) {
-
+        //critRechner();
     }
 
     private static void critRechner(){

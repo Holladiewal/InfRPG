@@ -8,6 +8,6 @@ public class Krieger extends Held {
     @Override
     void setupStats() {
         super.setupStats();
-        baseStats.put(Stat.Ausdauer, 0);
+        baseStats.put(Ausdauer, 5);
     }
 }

@@ -2,9 +2,6 @@ package me.beepbeat.Entity;
 
 import java.util.HashMap;
 
-import static me.beepbeat.Entity.Stat.Angriff;
-import static me.beepbeat.Entity.Stat.Leben;
-
 /**
  * Created by zacharias.schmitt on 24.01.2017.
  */
@@ -20,8 +17,8 @@ public class Entity {
     }
 
     void setupStats(){
-        baseStats.put(Leben, 0);
-        baseStats.put(Angriff, 0);
+        baseStats.put(Leben, 10);
+        baseStats.put(Angriff, 2);
     }
     int getLeben(){return baseStats.get(Leben) + boni.getOrDefault(Leben, 0) - schadenErlitten;}
     void addSchaden(int schaden){schadenErlitten += schaden;}
