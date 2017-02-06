@@ -1,7 +1,5 @@
 package me.beepbeat.Entity;
 
-import me.beepbeat.Items.IItem;
-
 import static me.beepbeat.Entity.Stat.Stärke;
 
 /**
@@ -24,6 +22,5 @@ public class Held extends Entity {
         assert this.name.equals("");
         this.name = name;
     }
-
 
 }

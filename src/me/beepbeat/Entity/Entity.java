@@ -2,8 +2,7 @@ package me.beepbeat.Entity;
 
 import java.util.HashMap;
 
-import static me.beepbeat.Entity.Stat.Angriff;
-import static me.beepbeat.Entity.Stat.Leben;
+import static me.beepbeat.Entity.Stat.*;
 
 /**
  * Created by zacharias.schmitt on 24.01.2017.

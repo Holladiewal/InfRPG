@@ -1,9 +1,11 @@
 package me.beepbeat;
 
 import com.jme3.app.SimpleApplication;
+import com.jme3.asset.plugins.ZipLocator;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.scene.Geometry;
+import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
 import me.beepbeat.util.InventoryEventBus;
 import me.beepbeat.util.Kampfregel;
@@ -42,7 +44,11 @@ public class Main extends SimpleApplication{
     public void simpleInitApp() {
         Geometry box = new Geometry("box", new Box(2,2,2));
         Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.setColor("Color", ColorRGBA.Red);
+        mat.setColor("Color", ColorRGBA.Pink);
+        Spatial scene = assetManager.loadModel("wildhouse/main.scene");
+        scene.setLocalTranslation(0, -5.2f, 0);
+        scene.setLocalScale(2);
+        rootNode.attachChild(scene);
         box.setMaterial(mat);
         rootNode.attachChild(box);
     }

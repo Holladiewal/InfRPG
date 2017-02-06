@@ -1,6 +1,6 @@
 package me.beepbeat.Entity;
 
-import static me.beepbeat.Entity.Stat.Zauberkraft;
+import static me.beepbeat.Entity.Stat.*;
 
 /**
  * Created by zacharias.schmitt on 24.01.2017.
