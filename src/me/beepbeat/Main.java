@@ -1,12 +1,11 @@
 package me.beepbeat;
 
-import com.bulletphysics.dynamics.character.KinematicCharacterController;
 import com.jme3.app.SimpleApplication;
 import com.jme3.asset.plugins.ZipLocator;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.collision.shapes.CollisionShape;
-import com.jme3.bullet.control.CharacterControl;
+import com.jme3.bullet.control.BetterCharacterControl;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
 import com.jme3.effect.ParticleEmitter;
@@ -20,13 +19,11 @@ import com.jme3.light.Light;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
-import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
-import com.jme3.scene.shape.Box;
+import me.beepbeat.Entity.BCC;
 import me.beepbeat.util.InventoryEventBus;
 import me.beepbeat.util.Kampfregel;
-import sun.reflect.Reflection;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -37,7 +34,7 @@ public class Main extends SimpleApplication implements ActionListener {
     public static InventoryEventBus inventoryEventBus = new InventoryEventBus();
 
     private RigidBodyControl landscape;
-    private CharacterControl player;
+    private BCC player;
     private Vector3f walkDirection = new Vector3f();
     private boolean left = false, right = false, up = false, down = false;
     float jumpspeed = 35;
@@ -105,18 +102,15 @@ public class Main extends SimpleApplication implements ActionListener {
         scene.addControl(landscape);
 
         CapsuleCollisionShape capsuleShape = new CapsuleCollisionShape(1.5f, 6f, 1);
-        player = new CharacterControl(capsuleShape, 0.02f);
-        player.setJumpSpeed(jumpspeed);
-        player.setFallSpeed(60);
-        player.setGravity(30);
-        player.setPhysicsLocation(new Vector3f(0, 10, 0));
+        player = new BCC(1.5f, 6f, 5f);
+        player.setJumpForce(new Vector3f(0, 5, 0));
+        player.setGravity(new Vector3f(0, -3, 0));
+        player.warp(new Vector3f(0, 10, 0));
+        player.setPhysicsDamping(0f);
 
-        rootNode.attachChild(scene);
         bulletAppState.getPhysicsSpace().add(landscape);
         bulletAppState.getPhysicsSpace().add(player);
 
-        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.setColor("Color", ColorRGBA.Black);
         scene.setLocalTranslation(0, -5.2f, 0);
         scene.setLocalScale(2);
         rootNode.attachChild(scene);
@@ -161,7 +155,7 @@ public class Main extends SimpleApplication implements ActionListener {
                 break;}
             case "Jump":{
                 if (isPressed) {
-                    System.out.println("Jump?");
+                    //System.out.println("Jump?");
                     player.jump();
                 }
                 break;
@@ -185,7 +179,9 @@ public class Main extends SimpleApplication implements ActionListener {
             if (down) {
                 walkDirection.addLocal(camDir.negate());
             }
+            walkDirection.set(1, 0, 0);
             player.setWalkDirection(walkDirection);
-            cam.setLocation(player.getPhysicsLocation());
+            cam.setLocation(player.getLocation());
+
         }
 }
