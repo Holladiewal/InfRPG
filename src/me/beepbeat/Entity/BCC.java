@@ -18,6 +18,6 @@ public class BCC extends BetterCharacterControl {
 
     public Vector3f getLocation(){
         //return location;
-        return rigidBody.getPhysicsLocation();
+        return location.clone();
     }
 }
